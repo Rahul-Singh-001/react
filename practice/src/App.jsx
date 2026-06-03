@@ -1,33 +1,61 @@
 import { useState } from "react";
-import { PostComponent } from "./post";
+import "./App.css";
+import { Postcard } from "./components/profilecard";
+import WebinarList from "./components/timetable";
+import WebinarActions from "./components/adder";
+import { Sidebar } from "./components/sidebar";
 
-export default function App(){
-    const [posts,setPosts]=useState([]);
-    const postcomponent=posts.map(post=><PostComponent 
-      name={post.name}
-      title={post.title}
-      image={post.image}
-      yearofpassing={post.yearOfPassing}
-      college={post.college}
-     /> )
-    function addPost (){
-        setPosts([...posts,{
-          name:"Rahul",
-          title:"Idcard",
-          image:"https://www.equinetmedia.com/hubfs/How-to-find-b2b-blog-images.png",
-          yearOfPassing:"2027" ,
-          college:"Abes Engineering college",
-        }])
-    }
-    return (
-      <>
-      <div style={{display:'flex',justifyContent:'center' ,backgroundColor:"lightpink", minHeight:"100%"}}>
-      
-        <button onClick={addPost} style={{backgroundColor:"blue",width:50,height:50}}>Add Post</button>
-        <div>
-          {postcomponent}
+function App() {
+  const [open, setOpen] = useState(true);
+
+  function toggle() {
+    setOpen((c) => !c);
+    console.log("toggle");
+  }
+
+  return (
+    <div className="relative flex">
+      {/* Sidebar */}
+      <Sidebar open={open} setopen={setOpen} />
+
+      {/* Main content */}
+      <div
+        className={`flex-1 transition-all duration-500 ease-in-out
+          
+        `}
+      >
+        {/* Banner */}
+        <div className="h-24 relative w-full transition-all duration-500 ease-in-out">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpJoXH9fTp9xdOBksEudd8Ov6t-4OtQjeS454dHra4zGREfw_nK851X0N9SOxJdYYCiho&usqp=CAU"
+            className="h-24 w-full  "
+            alt="Webinar Banner"
+          />
+
+          
+        </div>
+
+        {/* Content Section */}
+        <div className="flex flex-wrap justify-center m-5 gap-10 transition-all duration-500 ease-in-out">
+          <div className="relative -translate-y-10">
+            <Postcard />
+          </div>
+
+          <div className="space-y-5 m-10">
+            <div>
+              Monday, 14 October
+              <div className="font-bold text-2xl">Good Morning, Sanjay! 👋</div>
+            </div>
+            <WebinarList />
+          </div>
+
+          <div className="space-y-5 m-10">
+            <WebinarActions />
+          </div>
+        </div>
       </div>
     </div>
-      </>
-    )
+  );
 }
+
+export default App;
