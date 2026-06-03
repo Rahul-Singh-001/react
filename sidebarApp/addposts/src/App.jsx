@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import { PostComponent } from "./post";
 
 function App() {
