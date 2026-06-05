@@ -41,7 +41,7 @@ const Card = () => {
               {card.title}
 
               <span className="bg-white/20 w-6 h-6 rounded-full flex items-center justify-center">
-                →
+                
               </span>
             </button>
           </div> 
