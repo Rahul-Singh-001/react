@@ -2,7 +2,8 @@ import React from 'react'
 import Pagecontent from './Pagecontent'
 import Card from './card'
 
-const Section1 = () => {
+const Section1 = (props) => {
+  console.log(props.users)
   return (
     <>
     <div className="px-8">
@@ -12,10 +13,10 @@ const Section1 = () => {
     </div>
     <div className="flex gap-10 items-start ">
         <div className="w-[28%]">
-           <Pagecontent/>
+           <Pagecontent />
         </div>
-        <div className="w-[72%]">
-            <Card/>
+        <div id="right" className="w-[72%] overflow-x-auto">
+            <Card users={props.users}/>
         </div>
 
     </div>
